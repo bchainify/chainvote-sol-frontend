@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+/* Stop purging. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+select,
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.699);
+}
+
+select.curr {
+  padding: 0px 36px 0px 12px;
+  background-color: white;
+  appearance: none;
+  background-image: url(https://res.cloudinary.com/drqqv1c2v/image/upload/v1544982078/left-arrow.svg);
+  background-size: auto 7px;
+  background-position: calc(100% - 8px) center;
+  background-repeat: no-repeat;
+}
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
