@@ -28,11 +28,11 @@ Our project is to build an environment of trust, transparency, and accountabilit
 
 # Challenges we ran into
 
-Solana error handling and debugging on Windows platform.  This was resolved by using Linux.  Also, first time using Solana rust smart contract.
+First time using Solana rust smart contract.
 
 # Technologies we used
 
-* Figma Wireframes UI/UX Design - https://www.figma.com/file/R7kt20BSByK42YVQi0cL3E/Chainvote-Browser-Application?node-id=0%3A1
+* [Figma Wireframes UI/UX Design](https://www.figma.com/file/R7kt20BSByK42YVQi0cL3E/Chainvote-Browser-Application?node-id=0%3A1)
 * Microsoft Whiteboard for User Story Flowchart UML activity diagrams
 * TypeScript
 * CSS
