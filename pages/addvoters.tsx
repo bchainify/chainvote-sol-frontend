@@ -9,28 +9,29 @@ const instructionData = Buffer.from([1])
 export default function NewVote() {
     const {userAccount} = useUserAccount()
     const [voteDataAddress, setVoteDataAddress] = useState("88yU4rxzYhsmSTcb4tbSdAVGLmwaR7PQoNhRnpa8rNDX")
-    console.log(voterAccount.secretKey.toString())
     const [voterAddress, setVoterAddress] = useState(voterAccount.publicKey.toString())
     console.log({voterAddress})
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        const voterPublicKey = new PublicKey(voterAddress)
         const seed = voteDataAddress.substring(30)
-        console.log(seed)
-        const voterDataAccountKey = await PublicKey.createWithSeed(voterAccount.publicKey, seed, sol.getProgramPublicKey())
+        const voterDataAccountKey = await PublicKey.createWithSeed(voterPublicKey, seed, sol.getProgramPublicKey())
         console.log("voterDataAccount", voterDataAccountKey.toString())
 
         const numBytes = 2
         const rentExempt = await sol.conn.getMinimumBalanceForRentExemption(numBytes)
 
-        // await sol.conn.requestAirdrop(voterAccount.publicKey, 100_000_000)
+        console.log(rentExempt, userAccount.publicKey.toString())
+
+        await sol.conn.requestAirdrop(voterPublicKey, 1_000_000)
 
         let createTransaction = new Transaction().add( SystemProgram.createAccountWithSeed({
-            fromPubkey: voterAccount.publicKey,       // payer
+            fromPubkey: userAccount.publicKey,       // payer
             lamports: rentExempt,                // funds to deposit on the new account
             space: 2,                        // space required in bytes
 
-            basePubkey: userAccount.publicKey,       // derive from... must be signer
+            basePubkey: voterPublicKey,       // derive from... must be signer
             seed,                                   // derive from...
             programId: sol.getProgramPublicKey(),                 // derive from... and will be owner of account
 
@@ -40,28 +41,29 @@ export default function NewVote() {
         const voterDataTx = await sendAndConfirmTransaction(
             sol.conn,
             createTransaction,
-            [userAccount]
+            [userAccount, voterAccount]
         )
 
-        console.log({voterDataTx})
+        console.log({voterDataTx}, {voterKey: voterAccount.secretKey.toString()})
 
-        // const instruction = new TransactionInstruction({
-        //     keys: [
-        //         {pubkey: new PublicKey(voteDataAddress), isSigner: false, isWritable: true}, // vote data
-        //         {pubkey: userAccount.publicKey, isSigner: true, isWritable: false}, // vote creator
-        //         {pubkey: new PublicKey(voterAddress), isSigner: false, isWritable: false}, // new voter
-        //         {pubkey: voterDataAccountKey, isSigner: false, isWritable: true}, // voter data
-        //     ],
-        //     programId: sol.getProgramPublicKey(),
-        //     data: instructionData
-        // })
 
-        // const tx = await sendAndConfirmTransaction(
-        //     sol.conn,
-        //     new Transaction().add(instruction),
-        //     [userAccount,]
-        // )
-        // console.log("Vote created", tx)
+        const instruction = new TransactionInstruction({
+            keys: [
+                {pubkey: new PublicKey(voteDataAddress), isSigner: false, isWritable: true}, // vote data
+                {pubkey: userAccount.publicKey, isSigner: true, isWritable: false}, // vote creator
+                {pubkey: new PublicKey(voterAddress), isSigner: false, isWritable: false}, // new voter
+                {pubkey: voterDataAccountKey, isSigner: false, isWritable: true}, // voter data
+            ],
+            programId: sol.getProgramPublicKey(),
+            data: instructionData
+        })
+
+        const tx = await sendAndConfirmTransaction(
+            sol.conn,
+            new Transaction().add(instruction),
+            [userAccount]
+        )
+        console.log("Vote created", tx)
 
     }
 
@@ -79,7 +81,7 @@ export default function NewVote() {
                 onChange={handleChange(setVoteDataAddress)}
             />
             <input
-                className=" outline-none focus:outline-none h-10 text-lg pl-2 w-full"
+                className=" outline-none focus:outline-none h-10 mt-2 text-lg pl-2 w-full"
                 name="voteAccountData"
                 type="text"
                 placeholder="Vote account data address"

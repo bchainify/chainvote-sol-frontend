@@ -15,4 +15,5 @@ export class Sol {
     }
 }
 
-export default new Sol("http://localhost:8899");
+// export default new Sol("http://localhost:8899");
+export default new Sol("https://testnet.solana.com");

@@ -36,9 +36,9 @@ export default function NewVote() {
         console.log({sysAcctHash})
 
         const instruction = new TransactionInstruction({
-            keys: [{pubkey: voteDataAccount.publicKey, isSigner: false, isWritable: true}],
+            keys: [{pubkey: voteDataAccount.publicKey, isSigner: false, isWritable: true,}],
             programId: progPublicKey,
-            data: instructionData
+            data: Buffer.concat([instructionData, Buffer.from(voteTitle, "utf-8")])
         })
 
         const tx = await sendAndConfirmTransaction(

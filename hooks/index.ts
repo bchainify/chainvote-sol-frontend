@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import sol from '../utils/sol';
 
 
-const newUserAccount = new Account()
+let newUserAccount: Account
 export function useUserAccount(){
     const router = useRouter();
     const {privateKey: _privateKey} = router.query
@@ -12,6 +12,8 @@ export function useUserAccount(){
 
     const [balance, setBalance] = useState("")
     const [userAccount, setUserAccount] = useState(newUserAccount)
+
+    console.log("........",  privateKey, router.query)
 
     useEffect(() => {
         if(!privateKey)return;
@@ -22,5 +24,6 @@ export function useUserAccount(){
             setBalance(String(accountBalance))
         })()
     },[privateKey])
+
     return {privateKey, userAccount, balance}
 }
