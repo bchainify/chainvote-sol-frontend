@@ -1,5 +1,4 @@
-# Pay4me
-  # Project Video
+# Project Video
 
 [Bchainify Chainvote on Solana](https://www.youtube.com/watch?v=ZTe1iIL50yI&feature=emb_logo)
 
@@ -37,7 +36,8 @@ First time using Solana rust smart contract.
 * TypeScript
 * CSS
 * Javascript
-* Project Github - https://github.com/bchainify/chainvote-solana-frontend
+* Project Github Frontend: https://github.com/bchainify/chainvote-sol-frontend
+* Project Github SOL Smart Contract: https://github.com/bchainify/chainvote-solana-contract
 
 # Screenshots
 
