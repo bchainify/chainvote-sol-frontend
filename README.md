@@ -1,9 +1,13 @@
+# Bchainify Chainvote Solana Frontend
+
 # Project Video
 
-[Bchainify Chainvote on Solana](https://www.youtube.com/watch?v=ZTe1iIL50yI&feature=emb_logo)
+[Bchainify Chainvote on Solana](https://www.youtube.com/watch?v=KT5GeZ5lXjU)
 
 # Project Demo 
 [Bchainify Chainvote Dapp Demo](https://www.youtube.com/watch?v=3HgVMl-DlsQ)
+
+Try it out here: http://144.202.72.207:3000/login
 
 # Project Wiki
 [Bchainify Chainvote on Solana Project Site](https://github.com/bchainify/chainvote-solana/wiki)
@@ -30,7 +34,7 @@ Our project is to build an environment of trust, transparency, and accountabilit
 
 # Challenges we ran into
 
-First time using Solana rust smart contract.
+First time using Solana platform and rust smart contract.
 
 # Technologies we used
 
@@ -38,6 +42,7 @@ First time using Solana rust smart contract.
 * Microsoft Whiteboard for User Story Flowchart UML activity diagrams
 * TypeScript
 * CSS
+* Next.Js
 * Javascript
 * Project Github Frontend: https://github.com/bchainify/chainvote-sol-frontend
 * Project Github SOL Smart Contract: https://github.com/bchainify/chainvote-solana-contract
