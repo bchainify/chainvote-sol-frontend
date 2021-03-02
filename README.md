@@ -7,7 +7,7 @@
 # Project Demo 
 [Bchainify Chainvote Dapp Demo](https://www.youtube.com/watch?v=3HgVMl-DlsQ)
 
-Try it out here: http://144.202.72.207:3000/login
+Try it out here Live Demo: https://bchainify-chainvote-solana.netlify.app/login
 
 # Project Wiki
 [Bchainify Chainvote on Solana Project Site](https://github.com/bchainify/chainvote-solana/wiki)
