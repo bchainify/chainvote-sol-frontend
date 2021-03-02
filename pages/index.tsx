@@ -5,7 +5,7 @@ import oneAccount from "./one.json"
 import recAccount from "./rec.json"
 import { Account, sendAndConfirmTransaction } from "@solana/web3.js";
 
-const connURl = "http://localhost:8899"
+const connURl = "https://testnet.solana.com" //https://localhost:8899
 export default function Home() {
 
   const [state, setState] = useState()

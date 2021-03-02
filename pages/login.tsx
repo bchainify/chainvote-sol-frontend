@@ -34,9 +34,13 @@ export default function Login() {
 
     return (
         <form className="bg-gray-400 shadow-md m-auto mt-64 w-360 p-6" onSubmit={(e) => e.preventDefault()}>
+           
             <input className=" outline-none focus:outline-none h-10 text-lg pl-2 w-full" name="privKey" type="text" placeholder="Private key" value={privateKey} onChange={handleChange(setPrivateKey)} />
             <button className="bg-gray-700 h-12 mt-4 w-full" onClick={handleSubmit({privateKey}, router)} type="submit">Login</button>
             <button className="bg-gray-300 h-12 mt-4 w-full" onClick={handleGenerate} type="submit">Generate</button>
+            <br/><br/>
+            Note:
+            <br/>We are populating private key (from Solana Keygen) for Demo convenience.
         </form>
     )
 }

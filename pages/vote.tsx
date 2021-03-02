@@ -4,6 +4,7 @@ import { handleChange } from "../handlers";
 import { useUserAccount } from "../hooks";
 import sol from "../utils/sol";
 import bufferLayout from "buffer-layout"
+import Link from 'next/link'
 
 let defaultVoterData: PublicKey
 
@@ -76,6 +77,12 @@ export default function NewVote() {
                 <button className="bg-green-400 h-12 mt-4 w-20" onClick={handleSubmit("yes")} name="yes" type="submit">Yes</button>
                 <button className=" bg-red-400 h-12 mt-4 w-20"  onClick={handleSubmit("no")} name="no" type="submit">No</button>
             </div>
+            <br/><br/>
+            Note: Vote once and <br/>
+            <Link href="https://explorer.solana.com/address/8s9vbGThwWH5evk74tNwzCxEtWshyq3n2KYopaXrb1Sb?cluster=testnet"><a className="inline-block w-full mt-4 underline">Explore Transaction History on Solana Testnet</a></Link>
+           <Link href="/user" as="/user">
+                    <a className="inline-block w-full mt-4 underline">Back to User Menu</a>
+            </Link>
         </form>
     )
 }

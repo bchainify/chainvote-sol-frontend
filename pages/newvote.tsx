@@ -3,6 +3,8 @@ import { useState } from "react";
 import { handleChange } from "../handlers";
 import { useUserAccount } from "../hooks";
 import sol from "../utils/sol";
+import Link from 'next/link'
+import React from "react";
 
 const instructionData = Buffer.from([0]) // zero for new vote
 export default function NewVote() {
@@ -47,12 +49,19 @@ export default function NewVote() {
             [userAccount]
         )
         console.log("Vote created", tx)
-    }
+        
+     }
 
     return (
         <form className="bg-gray-400 shadow-md m-auto mt-64 w-360 p-6" onSubmit={handleSubmit}>
             <input className=" outline-none focus:outline-none h-10 text-lg pl-2 w-full" name="voteTitle" minLength={5} maxLength={10} type="text" placeholder="Vote title" value={voteTitle} onChange={handleChange(setVoteTitle)} />
-            <button className="bg-gray-700 h-12 mt-4 w-full" type="submit">Create a new vote</button>
-        </form>
+            <button className="bg-gray-700 h-12 mt-4 w-full" type="submit">Create a new proposal to vote.</button>
+            <br/><br/>
+            Note: Create once and <br/>
+            <Link href="https://explorer.solana.com/address/8s9vbGThwWH5evk74tNwzCxEtWshyq3n2KYopaXrb1Sb?cluster=testnet"><a className="inline-block w-full mt-4 underline">Explore Transaction History on Solana Testnet</a></Link>
+           <Link href="/user" as="/user">
+                    <a className="inline-block w-full mt-4 underline">Back to User Menu</a>
+            </Link>
+     </form>
     )
 }

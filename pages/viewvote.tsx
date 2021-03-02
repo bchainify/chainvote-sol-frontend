@@ -3,7 +3,7 @@ import { useState } from "react";
 import bufferLayout from "buffer-layout"
 import { handleChange } from "../handlers";
 import sol from "../utils/sol";
-
+import Link from 'next/link'
 
 const voteStruct = bufferLayout.struct([
     bufferLayout.u32("yes"),
@@ -46,6 +46,11 @@ export default function NewVote() {
                 </div>
             }
             <button className="bg-gray-700 h-12 mt-4 w-full" type="submit">Get vote data</button>
+            <br/><br/>
+            <Link href="https://explorer.solana.com/address/8s9vbGThwWH5evk74tNwzCxEtWshyq3n2KYopaXrb1Sb?cluster=testnet"><a className="inline-block w-full mt-4 underline">Explore Transaction History on Solana Testnet</a></Link>
+            <Link href="/user" as="/user">
+                    <a className="inline-block w-full mt-4 underline">Back to User Menu</a>
+            </Link>
         </form>
     )
 }
